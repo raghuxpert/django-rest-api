@@ -6,5 +6,5 @@ class CmAcct(models.Model):
     exp_date = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'CM_ACCT'

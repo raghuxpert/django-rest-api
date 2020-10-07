@@ -1,7 +1,9 @@
 from rest_framework import viewsets
-from . import models
-from . import serializers
+from .models import CmAcct
+from .serializers import CmAcctSerializer
+from django.http import HttpResponse, JsonResponse
 
-class CmAcctViewset(viewsets.ModelViewSet):
-    queryset = models.CmAcct.objects.all()
-    serializer_class = serializers.CmAcctSerializer
+def cmacctlist(request):
+    cms = CmAcct.objects.all()
+    serial = CmAcctSerializer(cms, many=True)
+    return JsonResponse(serial.data, safe=False)
