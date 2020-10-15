@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import cmdvceinvtrlist, cmdvceinvtronerequest, CmDvceInvtrViewset
+from .views import cmdvceinvtrlist, cmdvceinvtronerequest, CmDvceInvtrViewset, CmMetalViewset, CmFilterViewset
 
 urlpatterns = [
-    path('cmlist/', cmdvceinvtrlist, name='cmlist'),
-    path('cmone/', cmdvceinvtronerequest, name='cmone'),
-    path('cm/', CmDvceInvtrViewset, name='cmview')
+    path('cm/<int:acct>/', cmdvceinvtrlist, name='cmlist'),
+    path('cm/<int:acct>/<int:seq>/', cmdvceinvtronerequest, name='cmone'),
+    path('cm/', CmDvceInvtrViewset, name='cmview'),
+    path('cm/metal/', CmMetalViewset, name='cmmetal'),
+    path('cm/filter/', CmFilterViewset, name='cmfilter')
 ]
